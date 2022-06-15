@@ -30,6 +30,7 @@ public class ClientEntity {
 
     private String lastName;
 
+    @Nullable
     private Long phoneNumber;
 
     @Nullable

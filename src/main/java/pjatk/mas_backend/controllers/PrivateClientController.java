@@ -2,10 +2,8 @@ package pjatk.mas_backend.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pjatk.mas_backend.models.business.PrivateClientBO;
 import pjatk.mas_backend.models.entities.ClientEntity;
 import pjatk.mas_backend.services.PrivateClientService;
 
@@ -37,5 +35,13 @@ public class PrivateClientController {
 
         return ResponseEntity.ok(privateClient);
     }
+
+    @PostMapping("/add")
+    public ResponseEntity<PrivateClientBO> addPrivateClient(@RequestBody PrivateClientBO privateClientBO){
+        PrivateClientBO privateClient = privateClientService.savePrivateClient(privateClientBO);
+
+        return ResponseEntity.ok(privateClient);
+    }
+
 
 }
