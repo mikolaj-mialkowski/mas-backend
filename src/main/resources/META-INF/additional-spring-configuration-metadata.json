@@ -4,5 +4,10 @@
       "name": "mas.backend.controller.basePath",
       "type": "java.lang.String",
       "description": "Description for mas.backend.controller.basePath."
-  }
-] }
+    },
+    {
+      "name": "mas.backend.detailPath.corporateClientController",
+      "type": "java.lang.String",
+      "description": "Description for mas.backend.detailPath.corporateClientController."
+    }
+  ] }

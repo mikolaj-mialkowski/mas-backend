@@ -7,6 +7,7 @@ import pjatk.mas_backend.models.enums.ClientType;
 import pjatk.mas_backend.models.enums.DiscountAmount;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Entity
@@ -26,8 +27,12 @@ public class ClientEntity {
     @Enumerated(EnumType.STRING)
     private ClientType clientType;
 
+    @NonNull
+    @NotBlank
     private String firstName;
 
+    @NonNull
+    @NotBlank
     private String lastName;
 
     @Nullable

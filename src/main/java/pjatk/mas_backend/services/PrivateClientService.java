@@ -42,12 +42,8 @@ public class PrivateClientService {
     }
 
     public PrivateClientBO savePrivateClient(PrivateClientBO privateClientBO){
-        ClientEntity clientEntity = businessObjectToEntity(privateClientBO);
-        ClientEntity savedEntity = clientRepository.saveAndFlush(clientEntity);
-        LOGGER.debug("clientEntity = " + clientEntity);
-        LOGGER.debug("savedEntity = " + clientEntity);
-        LOGGER.debug(String.valueOf(clientEntity.equals(savedEntity)));
-
+        ClientEntity savedEntity = clientRepository.saveAndFlush(businessObjectToEntity(privateClientBO));
+        LOGGER.info("Saved new private client, as client entity = " + savedEntity);
         return entityToBusinessObject(savedEntity);
     }
 
@@ -61,6 +57,7 @@ public class PrivateClientService {
                         .build();
     }
 
+    @SuppressWarnings("all")
     private PrivateClientBO entityToBusinessObject(ClientEntity clientEntity){
         return PrivateClientBO.builder()
                 .id(clientEntity.getId())

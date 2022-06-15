@@ -3,3 +3,4 @@ mas:
     basePath: api.mas.backend
     detailPath:
       privateClientController: ${mas.backend.basePath}/privateClient
+      corporateClientController: ${mas.backend.basePath}/corporateClient

@@ -17,7 +17,7 @@ public class DefaultExceptionHandler {
     @ExceptionHandler({ResourceNotFoundException.class})
     public ResponseEntity<String> handleNotFoundException(ResourceNotFoundException resourceNotFoundException, WebRequest webRequest){
 
-        LOGGER.debug("ResourceNotFoundException: " + resourceNotFoundException.getMessage());
+        LOGGER.warn("ResourceNotFoundException: " + resourceNotFoundException.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resourceNotFoundException.getMessage());
     }
 }
