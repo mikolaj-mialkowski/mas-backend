@@ -4,9 +4,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pjatk.mas_backend.models.business.PrivateClientBO;
-import pjatk.mas_backend.models.entities.ClientEntity;
 import pjatk.mas_backend.services.PrivateClientService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,25 +23,24 @@ public class PrivateClientController {
 
 
     @GetMapping("/all")
-    public ResponseEntity<List<ClientEntity>> getPrivateClients(){
-        List<ClientEntity> privateClients = privateClientService.getAllPrivateClients();
+    public ResponseEntity<List<PrivateClientBO>> getPrivateClients(){
+        List<PrivateClientBO> privateClients = privateClientService.getAllPrivateClients();
 
         return ResponseEntity.ok(privateClients);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClientEntity> getPrivateClient(@PathVariable Long id){
-        ClientEntity privateClient = privateClientService.getPrivateClientById(id);
+    public ResponseEntity<PrivateClientBO> getPrivateClient(@PathVariable Long id){
+        PrivateClientBO privateClient = privateClientService.getPrivateClientById(id);
 
         return ResponseEntity.ok(privateClient);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<PrivateClientBO> addPrivateClient(@RequestBody PrivateClientBO privateClientBO){
+    public ResponseEntity<PrivateClientBO> addPrivateClient(@RequestBody @Valid PrivateClientBO privateClientBO){
         PrivateClientBO privateClient = privateClientService.savePrivateClient(privateClientBO);
 
         return ResponseEntity.ok(privateClient);
     }
-
 
 }

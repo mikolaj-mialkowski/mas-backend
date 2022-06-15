@@ -8,9 +8,9 @@ import pjatk.mas_backend.models.business.PrivateClientBO;
 import pjatk.mas_backend.models.entities.ClientEntity;
 import pjatk.mas_backend.models.enums.ClientType;
 import pjatk.mas_backend.repositories.ClientRepository;
-import pjatk.mas_backend.utils.DefaultExceptionHandler;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PrivateClientService {
@@ -23,22 +23,22 @@ public class PrivateClientService {
         this.clientRepository = clientRepository;
     }
 
-    public ClientEntity getPrivateClientById(Long id){
-        ClientEntity privateClient = clientRepository.findByClientTypeAndId(ClientType.PRIVATE,id);
+    public PrivateClientBO getPrivateClientById(Long id){
+        ClientEntity privateClientEntity = clientRepository.findByClientTypeAndId(ClientType.PRIVATE,id);
 
-        if (privateClient == null)
-            throw new ResourceNotFoundException("No private client found, for id="+id);
+        if (privateClientEntity == null)
+            throw new ResourceNotFoundException("No private client found, for id = "+id);
 
-        return privateClient;
+        return entityToBusinessObject(privateClientEntity);
     }
 
-    public List<ClientEntity> getAllPrivateClients(){
-        List<ClientEntity> privateClients = clientRepository.findAllByClientType(ClientType.PRIVATE);
+    public List<PrivateClientBO> getAllPrivateClients(){
+        List<ClientEntity> privateClientEntityList = clientRepository.findAllByClientType(ClientType.PRIVATE);
 
-        if (privateClients == null || privateClients.isEmpty())
+        if (privateClientEntityList == null || privateClientEntityList.isEmpty())
             throw new ResourceNotFoundException("No private clients found");
 
-        return privateClients;
+        return privateClientEntityList.stream().map(this::entityToBusinessObject).collect(Collectors.toList());
     }
 
     public PrivateClientBO savePrivateClient(PrivateClientBO privateClientBO){
@@ -48,7 +48,7 @@ public class PrivateClientService {
         LOGGER.debug("savedEntity = " + clientEntity);
         LOGGER.debug(String.valueOf(clientEntity.equals(savedEntity)));
 
-        return EntityToBusinessObject(savedEntity);
+        return entityToBusinessObject(savedEntity);
     }
 
     private ClientEntity businessObjectToEntity(PrivateClientBO privateClientBO){
@@ -61,7 +61,7 @@ public class PrivateClientService {
                         .build();
     }
 
-    private PrivateClientBO EntityToBusinessObject(ClientEntity clientEntity){
+    private PrivateClientBO entityToBusinessObject(ClientEntity clientEntity){
         return PrivateClientBO.builder()
                 .id(clientEntity.getId())
                 .firstName(clientEntity.getFirstName())

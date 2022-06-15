@@ -2,10 +2,15 @@ package pjatk.mas_backend.models.business;
 
 import lombok.*;
 import org.springframework.lang.Nullable;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @ToString
 @Builder
+@Validated
 @AllArgsConstructor
 @NoArgsConstructor
 public class PrivateClientBO {
@@ -13,16 +18,19 @@ public class PrivateClientBO {
     @Nullable
     private Long id;
 
-    @Nullable
+    @NonNull
+    @NotBlank
     private String firstName;
 
-    @Nullable
+    @NonNull
+    @NotBlank
     private String lastName;
 
-    @Nullable
+    @NonNull
+    @Min(0)
     private Long phoneNumber;
 
-    @Nullable
+    @NonNull
     private Boolean accessToGreenhouse;
 
 }

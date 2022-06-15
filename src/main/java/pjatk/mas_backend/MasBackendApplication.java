@@ -9,5 +9,4 @@ public class MasBackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(MasBackendApplication.class, args);
     }
-
 }
