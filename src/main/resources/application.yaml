@@ -1,0 +1,5 @@
+mas:
+  backend:
+    basePath: api.mas.backend
+    detailPath:
+      privateClientController: ${mas.backend.basePath}/privateClient

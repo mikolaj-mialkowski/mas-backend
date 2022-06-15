@@ -21,7 +21,7 @@ public class PrivateClientService {
         ClientEntity privateClient = clientRepository.findByClientTypeAndId(ClientType.PRIVATE,id);
 
         if (privateClient == null)
-            throw new ResourceNotFoundException("No private client for id="+id);
+            throw new ResourceNotFoundException("No private client found, for id="+id);
 
         return privateClient;
     }
@@ -33,6 +33,10 @@ public class PrivateClientService {
             throw new ResourceNotFoundException("No private clients found");
 
         return privateClients;
+    }
+
+    public void savePrivateClient(ClientEntity privateClient){
+        clientRepository.saveAndFlush(privateClient);
     }
 
 }
