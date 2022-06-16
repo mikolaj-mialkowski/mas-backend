@@ -18,13 +18,13 @@ public class DefaultExceptionHandler {
     @ExceptionHandler({ResourceNotFoundException.class})
     public ResponseEntity<String> handleNotFoundException(ResourceNotFoundException resourceNotFoundException, WebRequest webRequest){
 
-        LOGGER.warn("ResourceNotFoundException: " + resourceNotFoundException.getMessage());
+        LOGGER.error("ResourceNotFoundException: " + resourceNotFoundException.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resourceNotFoundException.getMessage());
     }
 
     @ExceptionHandler({BusinessException.class})
     public ResponseEntity<String> handleBusinessException(BusinessException businessException, WebRequest webRequest){
-        LOGGER.warn("BusinessException: " + businessException.getMessage());
+        LOGGER.error("BusinessException: " + businessException.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(businessException.getMessage());
     }
 }

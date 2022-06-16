@@ -5,3 +5,5 @@ mas:
       privateClientController: ${mas.backend.basePath}/privateClient
       corporateClientController: ${mas.backend.basePath}/corporateClient
       noviceGardenerController: ${mas.backend.basePath}/noviceGardener
+      experiencedGardenerController: ${mas.backend.basePath}/experiencedGardener
+      administrationWorkerController: ${mas.backend.basePath}/administrationWorker
