@@ -41,17 +41,17 @@ public class NoviceGardenerService {
     }
 
     public NoviceGardenerBO saveNoviceGardener(NoviceGardenerBO noviceGardenerBO){
-        try {
-            NoviceGardenerEntity noviceGardenerEntity = noviceGardenerRepository.saveAndFlush(businessObjectToEntity(noviceGardenerBO));
-            LOGGER.info("Saved new novice gardener, as novice gardener entity = " + noviceGardenerEntity);
-            return entityToBusinessObject(noviceGardenerEntity);
-        }
-        catch (DataIntegrityViolationException dataIntegrityViolationException){
-            if(Objects.requireNonNull(dataIntegrityViolationException.getMessage()).contains("23505-212")){ // 23505-212 - SQL code for unique duplicate
-                throw new BusinessException("Values in pesel should be unique");
-            }
-        }
-        throw new IllegalStateException();
+
+        noviceGardenerRepository.findAll().stream()
+                .filter(noviceGardenerEntity -> noviceGardenerEntity.getPesel().equals(noviceGardenerBO.getPesel()))
+                .findAny().ifPresent( (duplicate) -> {throw new BusinessException("Pesel values have to be unique");});
+
+        NoviceGardenerEntity noviceGardenerEntity = noviceGardenerRepository.saveAndFlush(businessObjectToEntity(noviceGardenerBO));
+
+
+        LOGGER.info("Saved new novice gardener, as novice gardener entity = " + noviceGardenerEntity);
+        return entityToBusinessObject(noviceGardenerEntity);
+
     }
 
     private NoviceGardenerEntity businessObjectToEntity(NoviceGardenerBO noviceGardenerBO){

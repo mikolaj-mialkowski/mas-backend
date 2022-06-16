@@ -9,5 +9,10 @@
       "name": "mas.backend.detailPath.corporateClientController",
       "type": "java.lang.String",
       "description": "Description for mas.backend.detailPath.corporateClientController."
+    },
+    {
+      "name": "mas.backend.detailPath.corporateClientController",
+      "type": "java.lang.String",
+      "description": "Description for mas.backend.detailPath.corporateClientController."
     }
   ] }
