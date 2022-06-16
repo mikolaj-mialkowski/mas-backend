@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import pjatk.mas_backend.models.business.DemandingPlantBO;
-import pjatk.mas_backend.models.business.UndemandingPlantBO;
 import pjatk.mas_backend.models.entities.DemandingPlantEntity;
 import pjatk.mas_backend.models.entities.UndemandingPlantEntity;
 import pjatk.mas_backend.models.enums.HealthState;
@@ -27,8 +26,7 @@ public class DemandingPlantService {
     private final UndemandingPlantRepository undemandingPlantRepository;
 
     public DemandingPlantService(DemandingPlantRepository demandingPlantRepository
-            , UndemandingPlantRepository undemandingPlantRepository
-            , SpeciesRepository speciesRepository)
+            , UndemandingPlantRepository undemandingPlantRepository)
     {
         this.demandingPlantRepository = demandingPlantRepository;
         this.undemandingPlantRepository = undemandingPlantRepository;

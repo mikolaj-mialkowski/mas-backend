@@ -10,3 +10,9 @@ mas:
       speciesController: ${mas.backend.basePath}/species
       undemandingPlantController: ${mas.backend.basePath}/undemandingPlant
       demandingPlantController: ${mas.backend.basePath}/demandingPlant
+      gardenController: ${mas.backend.basePath}/garden
+
+    garden:
+      name: National Botanic garden
+      address: 15 avenue 30-49, Pennsylvania
+      openHours: 9AM - 6PM
