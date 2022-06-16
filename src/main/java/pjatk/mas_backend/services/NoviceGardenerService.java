@@ -42,16 +42,16 @@ public class NoviceGardenerService {
 
     public NoviceGardenerBO saveNoviceGardener(NoviceGardenerBO noviceGardenerBO){
 
-        noviceGardenerRepository.findAll().stream()
-                .filter(noviceGardenerEntity -> noviceGardenerEntity.getPesel().equals(noviceGardenerBO.getPesel()))
-                .findAny().ifPresent( (duplicate) -> {throw new BusinessException("Pesel values have to be unique");});
+        noviceGardenerRepository.findAllByPesel(noviceGardenerBO.getPesel()).stream()
+                .findAny().ifPresent( (duplicate) -> {
+                    throw new BusinessException("Pesel values have to be unique");
+                });
 
-        NoviceGardenerEntity noviceGardenerEntity = noviceGardenerRepository.saveAndFlush(businessObjectToEntity(noviceGardenerBO));
-
+        NoviceGardenerEntity noviceGardenerEntity = noviceGardenerRepository.
+                saveAndFlush(businessObjectToEntity(noviceGardenerBO));
 
         LOGGER.info("Saved new novice gardener, as novice gardener entity = " + noviceGardenerEntity);
         return entityToBusinessObject(noviceGardenerEntity);
-
     }
 
     private NoviceGardenerEntity businessObjectToEntity(NoviceGardenerBO noviceGardenerBO){

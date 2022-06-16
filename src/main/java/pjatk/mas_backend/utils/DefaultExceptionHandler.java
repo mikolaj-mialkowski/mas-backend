@@ -24,7 +24,6 @@ public class DefaultExceptionHandler {
 
     @ExceptionHandler({BusinessException.class})
     public ResponseEntity<String> handleBusinessException(BusinessException businessException, WebRequest webRequest){
-
         LOGGER.warn("BusinessException: " + businessException.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(businessException.getMessage());
     }

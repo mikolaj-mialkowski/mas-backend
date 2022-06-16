@@ -6,6 +6,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import pjatk.mas_backend.models.business.ExperiencedGardenerBO;
 import pjatk.mas_backend.models.entities.ExperiencedGardenerEntity;
+import pjatk.mas_backend.models.exceptions.BusinessException;
 import pjatk.mas_backend.repositories.ExperiencedGardenerRepository;
 
 import java.util.List;
@@ -40,7 +41,15 @@ public class ExperiencedGardenerService {
     }
 
     public ExperiencedGardenerBO saveExperiencedGardener(ExperiencedGardenerBO experiencedGardenerBO){
-        ExperiencedGardenerEntity experiencedGardenerEntity = experiencedGardenerRepository.saveAndFlush(businessObjectToEntity(experiencedGardenerBO));
+
+        experiencedGardenerRepository.findAllByPesel(experiencedGardenerBO.getPesel()).stream()
+                .findAny().ifPresent( (duplicate) -> {
+                    throw new BusinessException("Pesel values have to be unique");
+                });
+
+        ExperiencedGardenerEntity experiencedGardenerEntity = experiencedGardenerRepository.
+                saveAndFlush(businessObjectToEntity(experiencedGardenerBO));
+
         LOGGER.info("Saved new experienced gardener, as experienced gardener entity = " + experiencedGardenerEntity);
         return entityToBusinessObject(experiencedGardenerEntity);
     }

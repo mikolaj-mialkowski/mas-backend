@@ -6,6 +6,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import pjatk.mas_backend.models.business.AdministrationWorkerBO;
 import pjatk.mas_backend.models.entities.AdministrationWorkerEntity;
+import pjatk.mas_backend.models.exceptions.BusinessException;
 import pjatk.mas_backend.repositories.AdministrationWorkerRepository;
 
 import java.util.List;
@@ -39,7 +40,15 @@ public class AdministrationWorkerService {
     }
 
     public AdministrationWorkerBO saveAdministrationWorker(AdministrationWorkerBO administrationWorkerBO){
-        AdministrationWorkerEntity administrationWorkerEntity = administrationWorkerRepository.saveAndFlush(businessObjectToEntity(administrationWorkerBO));
+
+        administrationWorkerRepository.findAllByPesel(administrationWorkerBO.getPesel()).stream()
+                .findAny().ifPresent( (duplicate) -> {
+                    throw new BusinessException("Pesel values have to be unique");
+                });
+
+        AdministrationWorkerEntity administrationWorkerEntity = administrationWorkerRepository
+                .saveAndFlush(businessObjectToEntity(administrationWorkerBO));
+
         LOGGER.info("Saved new administration worker, as administration worker entity = " + administrationWorkerEntity);
         return entityToBusinessObject(administrationWorkerEntity);
     }
