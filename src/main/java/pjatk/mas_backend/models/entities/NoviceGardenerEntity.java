@@ -17,7 +17,7 @@ import java.util.Objects;
 @ToString(callSuper = true)
 public class NoviceGardenerEntity extends WorkerEntity {
 
-    private int minYearsOfExperience = 3;
+    private int minYearsOfExperience;
 
     @Override
     public boolean equals(Object o) {

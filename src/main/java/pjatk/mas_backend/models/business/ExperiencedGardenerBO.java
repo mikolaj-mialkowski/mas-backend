@@ -25,4 +25,16 @@ public class ExperiencedGardenerBO extends WorkerBO {
     @Max(3000)
     private Double salaryBonus;
 
+
+    public LocalDate getPromotionDate(){
+        if (promotionDate != null)
+            return promotionDate;
+
+        else if (LocalDate.now().plusYears(3).isAfter(super.getEmploymentDate())) {
+            promotionDate = super.getEmploymentDate().plusYears(3);
+            return promotionDate;
+        }
+
+        return LocalDate.now();
+    }
 }

@@ -1,14 +1,17 @@
 package pjatk.mas_backend.models.entities;
 
+import io.swagger.models.auth.In;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.Proxy;
-import org.springframework.lang.Nullable;
+import pjatk.mas_backend.models.enums.HealthState;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Max;
-import java.time.LocalDate;
+import javax.validation.constraints.Min;
 import java.util.Objects;
 
 @SuperBuilder
@@ -19,22 +22,27 @@ import java.util.Objects;
 @NoArgsConstructor
 @Proxy(lazy = false)
 @ToString(callSuper = true)
-public class ExperiencedGardenerEntity extends WorkerEntity {
+public class DemandingPlantEntity extends PlantEntity {
 
-
-    @Max(3000)
-    @Getter
+    @Min(1)
+    @Max(10)
     @NonNull
-    private Double salaryBonus;
+    private Double groundPH;
 
-    @Nullable
-    private LocalDate promotionDate;
+    @Min(1)
+    @Max(365)
+    @NonNull
+    private Integer hydratingDays;
+
+    @NonNull
+    @Enumerated(EnumType.STRING)
+    private HealthState healthState;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        ExperiencedGardenerEntity that = (ExperiencedGardenerEntity) o;
+        DemandingPlantEntity that = (DemandingPlantEntity) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 

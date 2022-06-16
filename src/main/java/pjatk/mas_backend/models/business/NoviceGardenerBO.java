@@ -10,6 +10,6 @@ import lombok.experimental.SuperBuilder;
 @RequiredArgsConstructor
 public class NoviceGardenerBO extends WorkerBO {
 
-    private static int minYearsOfExperience = 3;
+    private static Integer minYearsOfExperience = 3;
 
 }
