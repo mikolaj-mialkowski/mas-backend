@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @ToString
 @SuperBuilder
 @Validated
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 public abstract class WorkerBO {
 

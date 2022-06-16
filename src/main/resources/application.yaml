@@ -4,3 +4,4 @@ mas:
     detailPath:
       privateClientController: ${mas.backend.basePath}/privateClient
       corporateClientController: ${mas.backend.basePath}/corporateClient
+      noviceGardenerController: ${mas.backend.basePath}/noviceGardener

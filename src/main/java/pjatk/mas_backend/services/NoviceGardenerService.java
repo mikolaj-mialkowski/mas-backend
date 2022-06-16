@@ -2,13 +2,16 @@ package pjatk.mas_backend.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import pjatk.mas_backend.models.business.NoviceGardenerBO;
 import pjatk.mas_backend.models.entities.NoviceGardenerEntity;
+import pjatk.mas_backend.models.exceptions.BusinessException;
 import pjatk.mas_backend.repositories.NoviceGardenerRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,9 +41,17 @@ public class NoviceGardenerService {
     }
 
     public NoviceGardenerBO saveNoviceGardener(NoviceGardenerBO noviceGardenerBO){
-        NoviceGardenerEntity noviceGardenerEntity = noviceGardenerRepository.saveAndFlush(businessObjectToEntity(noviceGardenerBO));
-        LOGGER.info("Saved new novice gardener, as novice gardener entity = " + noviceGardenerEntity);
-        return entityToBusinessObject(noviceGardenerEntity);
+        try {
+            NoviceGardenerEntity noviceGardenerEntity = noviceGardenerRepository.saveAndFlush(businessObjectToEntity(noviceGardenerBO));
+            LOGGER.info("Saved new novice gardener, as novice gardener entity = " + noviceGardenerEntity);
+            return entityToBusinessObject(noviceGardenerEntity);
+        }
+        catch (DataIntegrityViolationException dataIntegrityViolationException){
+            if(Objects.requireNonNull(dataIntegrityViolationException.getMessage()).contains("23505-212")){ // 23505-212 - SQL code for unique duplicate
+                throw new BusinessException("Values in pesel should be unique");
+            }
+        }
+        throw new IllegalStateException();
     }
 
     private NoviceGardenerEntity businessObjectToEntity(NoviceGardenerBO noviceGardenerBO){

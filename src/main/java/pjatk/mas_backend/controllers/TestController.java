@@ -14,9 +14,7 @@ public class TestController {
 
     @GetMapping("/test")
     public ResponseEntity<String> getTestResponse(){
-
         String response = (LocalDateTime.now()) + " " + (Math.random() * 100);
-
         return ResponseEntity.ok(response);
     }
 

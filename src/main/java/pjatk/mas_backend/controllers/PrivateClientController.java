@@ -23,21 +23,18 @@ public class PrivateClientController {
     @GetMapping("/all")
     public ResponseEntity<List<PrivateClientBO>> getPrivateClients(){
         List<PrivateClientBO> privateClientBOList = privateClientService.getAllPrivateClients();
-
         return ResponseEntity.ok(privateClientBOList);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<PrivateClientBO> getPrivateClient(@PathVariable Long id){
         PrivateClientBO privateClientBO = privateClientService.getPrivateClientById(id);
-
         return ResponseEntity.ok(privateClientBO);
     }
 
     @PostMapping("/add")
     public ResponseEntity<PrivateClientBO> addPrivateClient(@RequestBody @Valid PrivateClientBO privateClientBO){
         PrivateClientBO savedClient = privateClientService.savePrivateClient(privateClientBO);
-
         return ResponseEntity.ok(savedClient);
     }
 
