@@ -10,14 +10,13 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Entity
 @Getter
 @Setter
-@ToString
+@MappedSuperclass
 @SuperBuilder
-@AllArgsConstructor
-@NoArgsConstructor
+@ToString
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class WorkerEntity {
 
     @Id
@@ -34,6 +33,7 @@ public class WorkerEntity {
     private String lastName;
 
     @NonNull
+    @Column(unique = true)
     private Long pesel;
 
     @NonNull
