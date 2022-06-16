@@ -7,3 +7,4 @@ mas:
       noviceGardenerController: ${mas.backend.basePath}/noviceGardener
       experiencedGardenerController: ${mas.backend.basePath}/experiencedGardener
       administrationWorkerController: ${mas.backend.basePath}/administrationWorker
+      speciesController: ${mas.backend.basePath}/species

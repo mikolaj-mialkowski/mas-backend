@@ -2,9 +2,7 @@ package pjatk.mas_backend.models.entities;
 
 import lombok.*;
 import org.hibernate.Hibernate;
-import org.springframework.lang.Nullable;
-import pjatk.mas_backend.models.enums.ClientType;
-import pjatk.mas_backend.models.enums.DiscountAmount;
+import pjatk.mas_backend.models.enums.LifeCycle;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -17,7 +15,7 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClientEntity {
+public class SpeciesEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,36 +23,20 @@ public class ClientEntity {
     private Long id;
 
     @NonNull
-    @Enumerated(EnumType.STRING)
-    private ClientType clientType;
+    @NotBlank
+    @Column(unique = true)
+    private String latinName;
 
     @NonNull
-    @NotBlank
-    private String firstName;
-
-    @NonNull
-    @NotBlank
-    private String lastName;
-
-    @Nullable
-    private Long phoneNumber;
-
-    @Nullable
-    private Boolean accessToGreenhouse;
-
-    @Nullable
-    private String companyName;
-
-    @Nullable
     @Enumerated(EnumType.STRING)
-    private DiscountAmount discountAmount;
+    private LifeCycle lifeCycle;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        ClientEntity clientEntity = (ClientEntity) o;
-        return id != null && Objects.equals(id, clientEntity.id);
+        SpeciesEntity that = (SpeciesEntity) o;
+        return id != null && Objects.equals(id, that.id);
     }
 
     @Override
