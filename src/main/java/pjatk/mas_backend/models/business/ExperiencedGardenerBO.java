@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class ExperiencedGardenerBO {
+public class ExperiencedGardenerBO extends WorkerBO {
 
     @Nullable
     private LocalDate promotionDate;
