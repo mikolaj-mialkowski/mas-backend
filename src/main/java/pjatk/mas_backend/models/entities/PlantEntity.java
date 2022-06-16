@@ -27,7 +27,7 @@ public class PlantEntity {
     private Boolean fertilizer;
 
     @NonNull
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SpeciesEntity speciesEntity;
 
     @Override

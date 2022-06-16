@@ -64,7 +64,7 @@ public class DemandingPlantService {
                 .fertilizer(demandingPlantBO.getFertilizer())
                 .groundPH(demandingPlantBO.getGroundPH())
                 .hydratingDays(demandingPlantBO.getHydratingDays())
-                .speciesEntity(demandingPlantBO.getSpeciesEntity())
+                .speciesEntity(undemandingPlantEntityToRemove.getSpeciesEntity())
                 .build();
 
         DemandingPlantEntity demandingPlantEntityToAdd = demandingPlantRepository.

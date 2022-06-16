@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import pjatk.mas_backend.models.business.NoviceGardenerBO;
 import pjatk.mas_backend.models.business.UndemandingPlantBO;
 import pjatk.mas_backend.models.entities.NoviceGardenerEntity;
+import pjatk.mas_backend.models.entities.SpeciesEntity;
 import pjatk.mas_backend.models.entities.UndemandingPlantEntity;
 import pjatk.mas_backend.models.enums.HealthState;
 import pjatk.mas_backend.models.exceptions.BusinessException;
@@ -50,9 +51,11 @@ public class UndemandingPlantService {
 
     public UndemandingPlantBO saveUndemandingPlant(UndemandingPlantBO undemandingPlantBO){
 
-        speciesRepository.findById(undemandingPlantBO.getSpeciesEntity().getId())
-                        .orElseThrow(() -> new  BusinessException("No such species found"));
+        SpeciesEntity speciesEntity = speciesRepository
+                .findById(undemandingPlantBO.getSpeciesEntity().getId())
+                .orElseThrow(() -> new  BusinessException("No such species found"));
 
+        undemandingPlantBO.setSpeciesEntity(speciesEntity);
 
         UndemandingPlantEntity undemandingPlantEntity = undemandingPlantRepository.
                 saveAndFlush(businessObjectToEntity(undemandingPlantBO));
