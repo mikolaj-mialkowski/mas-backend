@@ -1,5 +1,6 @@
 package pjatk.mas_backend.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.springframework.lang.Nullable;
@@ -8,7 +9,9 @@ import pjatk.mas_backend.models.enums.DiscountAmount;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -48,6 +51,11 @@ public class ClientEntity {
     @Nullable
     @Enumerated(EnumType.STRING)
     private DiscountAmount discountAmount;
+
+    @OneToMany
+    @ToString.Exclude
+    @JsonIgnore
+    private Set<VisitEntity> visitEntity;
 
     @Override
     public boolean equals(Object o) {

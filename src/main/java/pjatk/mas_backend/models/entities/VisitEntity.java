@@ -1,15 +1,11 @@
 package pjatk.mas_backend.models.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
-import pjatk.mas_backend.models.enums.LifeCycle;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -17,36 +13,27 @@ import java.util.Set;
 @ToString
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
-public class GardenEntity {
+@RequiredArgsConstructor
+public class VisitEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NonNull
-    @NotBlank
-    private String name;
+    private LocalDate date;
 
-    @NonNull
-    @NotBlank
-    private String address;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private ClientEntity clientEntity;
 
-    @NonNull
-    @NotBlank
-    private String openHours;
-
-    @OneToMany
-    @ToString.Exclude
-    @JsonIgnore
-    private Set<VisitEntity> visitEntity;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private GardenEntity gardenEntity;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        GardenEntity that = (GardenEntity) o;
+        VisitEntity that = (VisitEntity) o;
         return id != null && Objects.equals(id, that.id);
     }
 
