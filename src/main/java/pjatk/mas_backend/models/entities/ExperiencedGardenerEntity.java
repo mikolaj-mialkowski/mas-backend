@@ -1,5 +1,6 @@
 package pjatk.mas_backend.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
@@ -34,8 +35,9 @@ public class ExperiencedGardenerEntity extends WorkerEntity {
     @Nullable
     private LocalDate promotionDate;
 
-    @NonNull
     @OneToMany(fetch = FetchType.EAGER)
+    @ToString.Exclude
+    @JsonIgnore
     private Set<CareEntity> careEntity;
 
     @Override

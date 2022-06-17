@@ -1,5 +1,6 @@
 package pjatk.mas_backend.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -43,7 +44,8 @@ public class ArticleEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private AdministrationWorkerEntity administrationWorkerEntity;
 
-    @NonNull
+    @ToString.Exclude
+    @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER)
     private CareEntity careEntity;
 

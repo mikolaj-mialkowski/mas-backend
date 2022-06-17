@@ -1,5 +1,6 @@
 package pjatk.mas_backend.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.models.auth.In;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -37,7 +38,8 @@ public class DemandingPlantEntity extends PlantEntity {
     @Enumerated(EnumType.STRING)
     private HealthState healthState;
 
-    @NonNull
+    @ToString.Exclude
+    @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER)
     private CareEntity careEntity;
 

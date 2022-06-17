@@ -42,6 +42,5 @@ public class ArticleBO {
     @NonNull
     private AdministrationWorkerEntity administrationWorkerEntity;
 
-    @NonNull
     private CareEntity careEntity;
 }
