@@ -24,6 +24,7 @@ public class AdministrationWorkerEntity extends WorkerEntity{
     @ToString.Exclude
     @JsonIgnore
     private Set<ArticleEntity> articleEntities;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

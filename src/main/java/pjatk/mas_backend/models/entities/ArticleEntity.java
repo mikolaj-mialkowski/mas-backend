@@ -35,10 +35,12 @@ public class ArticleEntity {
     @NotBlank
     private String destinationInfo;
 
-    @ManyToOne
+    @NonNull
+    @ManyToOne(fetch = FetchType.EAGER)
     private GardenEntity gardenEntity;
 
-    @ManyToOne
+    @NonNull
+    @ManyToOne(fetch = FetchType.EAGER)
     private AdministrationWorkerEntity administrationWorkerEntity;
 
     //CARE

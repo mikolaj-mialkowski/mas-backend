@@ -40,6 +40,10 @@ public class GardenEntity {
     @JsonIgnore
     private Set<VisitEntity> visitEntities;
 
+    @OneToMany
+    @ToString.Exclude
+    @JsonIgnore
+    private Set<ArticleEntity> articleEntities;
 
     @Override
     public boolean equals(Object o) {

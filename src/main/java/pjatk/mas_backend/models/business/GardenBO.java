@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
+import pjatk.mas_backend.models.entities.ArticleEntity;
 import pjatk.mas_backend.models.entities.VisitEntity;
 import pjatk.mas_backend.models.enums.LifeCycle;
 
@@ -36,7 +37,7 @@ public class GardenBO {
     @NotBlank
     private String openHours;
 
-    @ToString.Exclude
-    @JsonIgnore
     private Set<VisitEntity> visitEntities;
+
+    private Set<ArticleEntity> articleEntities;
 }
