@@ -7,9 +7,13 @@ import org.hibernate.annotations.Proxy;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Max;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
 @SuperBuilder
 @Entity
@@ -29,6 +33,10 @@ public class ExperiencedGardenerEntity extends WorkerEntity {
 
     @Nullable
     private LocalDate promotionDate;
+
+    @NonNull
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<CareEntity> careEntity;
 
     @Override
     public boolean equals(Object o) {

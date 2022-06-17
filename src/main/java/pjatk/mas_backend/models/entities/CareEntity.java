@@ -6,6 +6,7 @@ import org.hibernate.Hibernate;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -16,7 +17,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class ArticleEntity {
+public class CareEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,34 +25,28 @@ public class ArticleEntity {
     private Long id;
 
     @NonNull
-    @NotBlank
-    private String name;
-
-    @Min(0)
-    @NonNull
-    private Double price;
+    private LocalDate startDate;
 
     @NonNull
-    @NotBlank
-    private String destinationInfo;
-
-    @NonNull
-    @ManyToOne(fetch = FetchType.EAGER)
-    private GardenEntity gardenEntity;
-
-    @NonNull
-    @ManyToOne(fetch = FetchType.EAGER)
-    private AdministrationWorkerEntity administrationWorkerEntity;
+    private LocalDate endDate;
 
     @NonNull
     @OneToOne(fetch = FetchType.EAGER)
-    private CareEntity careEntity;
+    private ArticleEntity articleEntity;
+
+    @NonNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    private ExperiencedGardenerEntity experiencedGardenerEntity;
+
+    @NonNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    private DemandingPlantEntity demandingPlantEntity;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        ArticleEntity that = (ArticleEntity) o;
+        CareEntity that = (CareEntity) o;
         return id != null && Objects.equals(id, that.id);
     }
 

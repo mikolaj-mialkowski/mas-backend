@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
 import pjatk.mas_backend.models.entities.AdministrationWorkerEntity;
+import pjatk.mas_backend.models.entities.CareEntity;
 import pjatk.mas_backend.models.entities.ClientEntity;
 import pjatk.mas_backend.models.entities.GardenEntity;
 
@@ -40,4 +41,7 @@ public class ArticleBO {
 
     @NonNull
     private AdministrationWorkerEntity administrationWorkerEntity;
+
+    @NonNull
+    private CareEntity careEntity;
 }

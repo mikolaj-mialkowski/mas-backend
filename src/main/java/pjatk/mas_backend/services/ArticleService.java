@@ -18,8 +18,6 @@ public class ArticleService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ArticleService.class);
 
-    //private final VisitRepository visitRepository; //CARE
-
     private final ArticleRepository articleRepository;
     private final GardenRepository gardenRepository;
 
@@ -82,7 +80,6 @@ public class ArticleService {
                 .destinationInfo(articleBO.getDestinationInfo())
                 .gardenEntity(articleBO.getGardenEntity())
                 .administrationWorkerEntity(articleBO.getAdministrationWorkerEntity())
-                //CARE
                 .build();
     }
 
@@ -95,6 +92,7 @@ public class ArticleService {
                 .destinationInfo(articleEntity.getDestinationInfo())
                 .gardenEntity(articleEntity.getGardenEntity())
                 .administrationWorkerEntity(articleEntity.getAdministrationWorkerEntity())
+                .careEntity(articleEntity.getCareEntity())
                 .build();
     }
 }

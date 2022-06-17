@@ -93,6 +93,7 @@ public class DemandingPlantService {
                 .speciesEntity(demandingPlantEntity.getSpeciesEntity())
                 .groundPH(demandingPlantEntity.getGroundPH())
                 .hydratingDays(demandingPlantEntity.getHydratingDays())
+                .careEntity(demandingPlantEntity.getCareEntity())
                 .build();
     }
 }

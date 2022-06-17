@@ -81,6 +81,7 @@ public class ExperiencedGardenerService {
                 .contactInfo(experiencedGardenerEntity.getContactInfo())
                 .salaryBonus(experiencedGardenerEntity.getSalaryBonus())
                 .promotionDate(experiencedGardenerEntity.getPromotionDate())
+                .careEntity(experiencedGardenerEntity.getCareEntity())
                 .build();
     }
 }

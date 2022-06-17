@@ -12,6 +12,8 @@ mas:
       demandingPlantController: ${mas.backend.basePath}/demandingPlant
       gardenController: ${mas.backend.basePath}/garden
       visitController: ${mas.backend.basePath}/visit
+      articleController: ${mas.backend.basePath}/article
+      careController: ${mas.backend.basePath}/care
 
     garden:
       name: National Botanic garden

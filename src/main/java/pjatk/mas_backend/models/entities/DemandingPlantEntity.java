@@ -7,12 +7,11 @@ import org.hibernate.Hibernate;
 import org.hibernate.annotations.Proxy;
 import pjatk.mas_backend.models.enums.HealthState;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.Objects;
+import java.util.Set;
 
 @SuperBuilder
 @Entity
@@ -37,6 +36,10 @@ public class DemandingPlantEntity extends PlantEntity {
     @NonNull
     @Enumerated(EnumType.STRING)
     private HealthState healthState;
+
+    @NonNull
+    @OneToOne(fetch = FetchType.EAGER)
+    private CareEntity careEntity;
 
     @Override
     public boolean equals(Object o) {

@@ -2,6 +2,7 @@ package pjatk.mas_backend.models.business;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import pjatk.mas_backend.models.entities.CareEntity;
 import pjatk.mas_backend.models.enums.HealthState;
 
 import javax.persistence.EnumType;
@@ -29,5 +30,7 @@ public class DemandingPlantBO extends PlantBO {
     @NonNull
     @Enumerated(EnumType.STRING)
     private static HealthState healthState = HealthState.UNHEALTHY_DEMANDING;
+
+    private CareEntity careEntity;
 
 }

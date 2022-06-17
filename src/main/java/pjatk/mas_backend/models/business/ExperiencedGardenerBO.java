@@ -6,10 +6,12 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import org.springframework.lang.Nullable;
+import pjatk.mas_backend.models.entities.CareEntity;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.time.LocalDate;
+import java.util.Set;
 
 @SuperBuilder
 @Getter
@@ -24,6 +26,8 @@ public class ExperiencedGardenerBO extends WorkerBO {
     @Min(1)
     @Max(3000)
     private Double salaryBonus;
+
+    private Set<CareEntity> careEntity;
 
 
     public LocalDate getPromotionDate(){
