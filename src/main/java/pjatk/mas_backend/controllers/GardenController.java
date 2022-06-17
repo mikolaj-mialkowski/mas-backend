@@ -22,13 +22,13 @@ public class GardenController {
     }
 
     @GetMapping("/base")
-    public ResponseEntity<GardenBO> getPrivateClients(){
+    public ResponseEntity<GardenBO> getGarden(){
         GardenBO gardenBO = gardenService.getGarden();
         return ResponseEntity.ok(gardenBO);
     }
 
     @PostMapping("/change")
-    public ResponseEntity<GardenBO> addPrivateClient(@RequestBody @Valid GardenBO gardenBO){
+    public ResponseEntity<GardenBO> changeGarden(@RequestBody @Valid GardenBO gardenBO){
         GardenBO changedGarden = gardenService.changeGarden(gardenBO);
         return ResponseEntity.ok(changedGarden);
     }

@@ -23,19 +23,19 @@ public class DemandingPlantController {
 
 
     @GetMapping("/all")
-    public ResponseEntity<List<DemandingPlantBO>> getPrivateClients(){
+    public ResponseEntity<List<DemandingPlantBO>> getDemandingPlants(){
         List<DemandingPlantBO> demandingPlantBOList = demandingPlantService.getAllDemandingPlants();
         return ResponseEntity.ok(demandingPlantBOList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DemandingPlantBO> getPrivateClient(@PathVariable Long id){
+    public ResponseEntity<DemandingPlantBO> getDemandingPlant(@PathVariable Long id){
         DemandingPlantBO demandingPlantBO = demandingPlantService.getDemandingPlantById(id);
         return ResponseEntity.ok(demandingPlantBO);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<DemandingPlantBO> addPrivateClient(@RequestBody @Valid DemandingPlantBO demandingPlantBO){
+    public ResponseEntity<DemandingPlantBO> addDemandingPlant(@RequestBody @Valid DemandingPlantBO demandingPlantBO){
         DemandingPlantBO savedDemandingPlant = demandingPlantService.saveDemandingPlant(demandingPlantBO);
         return ResponseEntity.ok(savedDemandingPlant);
     }

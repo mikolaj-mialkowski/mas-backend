@@ -22,19 +22,19 @@ public class CareController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<CareBO>> getArticles(){
+    public ResponseEntity<List<CareBO>> getCares(){
         List<CareBO> careBOList = careService.getAllCares();
         return ResponseEntity.ok(careBOList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CareBO> getPrivateClient(@PathVariable Long id){
+    public ResponseEntity<CareBO> getCare(@PathVariable Long id){
         CareBO careBO = careService.getCareById(id);
         return ResponseEntity.ok(careBO);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<CareBO> addPrivateClient(@RequestBody @Valid CareBO careBO){
+    public ResponseEntity<CareBO> addCare(@RequestBody @Valid CareBO careBO){
         CareBO savedCare = careService.saveCare(careBO);
         return ResponseEntity.ok(savedCare);
     }

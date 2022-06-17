@@ -21,21 +21,20 @@ public class UndemandingPlantController {
         this.undemandingPlantService = undemandingPlantService;
     }
 
-
     @GetMapping("/all")
-    public ResponseEntity<List<UndemandingPlantBO>> getPrivateClients(){
+    public ResponseEntity<List<UndemandingPlantBO>> getUndemandingPlants(){
         List<UndemandingPlantBO> undemandingPlantBOList = undemandingPlantService.getAllUndemandingPlants();
         return ResponseEntity.ok(undemandingPlantBOList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UndemandingPlantBO> getPrivateClient(@PathVariable Long id){
+    public ResponseEntity<UndemandingPlantBO> getUndemandingPlant(@PathVariable Long id){
         UndemandingPlantBO undemandingPlantBO = undemandingPlantService.getUndemandingPlantById(id);
         return ResponseEntity.ok(undemandingPlantBO);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<UndemandingPlantBO> addPrivateClient(@RequestBody @Valid UndemandingPlantBO undemandingPlantBO){
+    public ResponseEntity<UndemandingPlantBO> addUndemandingPlant(@RequestBody @Valid UndemandingPlantBO undemandingPlantBO){
         UndemandingPlantBO savedUndemandingPlant = undemandingPlantService.saveUndemandingPlant(undemandingPlantBO);
         return ResponseEntity.ok(savedUndemandingPlant);
     }

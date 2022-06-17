@@ -22,19 +22,19 @@ public class SpeciesController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<SpeciesBO>> getPrivateClients(){
+    public ResponseEntity<List<SpeciesBO>> getSpecies(){
         List<SpeciesBO> speciesBOList = speciesService.getAllSpecies();
         return ResponseEntity.ok(speciesBOList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SpeciesBO> getPrivateClient(@PathVariable Long id){
+    public ResponseEntity<SpeciesBO> getSpecies(@PathVariable Long id){
         SpeciesBO speciesBO = speciesService.getSpeciesById(id);
         return ResponseEntity.ok(speciesBO);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<SpeciesBO> addPrivateClient(@RequestBody @Valid SpeciesBO speciesBO){
+    public ResponseEntity<SpeciesBO> addSpecies(@RequestBody @Valid SpeciesBO speciesBO){
         SpeciesBO savedSpecies = speciesService.saveSpecies(speciesBO);
         return ResponseEntity.ok(savedSpecies);
     }

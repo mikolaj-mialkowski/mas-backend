@@ -4,7 +4,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pjatk.mas_backend.models.business.AdministrationWorkerBO;
-import pjatk.mas_backend.models.business.ExperiencedGardenerBO;
 import pjatk.mas_backend.services.AdministrationWorkerService;
 
 import javax.validation.Valid;
@@ -21,9 +20,8 @@ public class AdministrationWorkerController {
         this.administrationWorkerService = administrationWorkerService;
     }
 
-
     @GetMapping("/all")
-    public ResponseEntity<List<AdministrationWorkerBO>> getNoviceGardeners(){
+    public ResponseEntity<List<AdministrationWorkerBO>> getGardeners(){
         List<AdministrationWorkerBO> administrationWorkerBOList = administrationWorkerService.getAllAdministrationWorkers();
         return ResponseEntity.ok(administrationWorkerBOList);
     }

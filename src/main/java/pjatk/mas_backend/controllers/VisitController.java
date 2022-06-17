@@ -22,19 +22,19 @@ public class VisitController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<VisitBO>> getPrivateClients(){
+    public ResponseEntity<List<VisitBO>> getVisits(){
         List<VisitBO> visitBOList = visitService.getAllVisits();
         return ResponseEntity.ok(visitBOList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VisitBO> getPrivateClient(@PathVariable Long id){
+    public ResponseEntity<VisitBO> getVisit(@PathVariable Long id){
         VisitBO visitBO = visitService.getVisitById(id);
         return ResponseEntity.ok(visitBO);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<VisitBO> addPrivateClient(@RequestBody @Valid VisitBO visitBO){
+    public ResponseEntity<VisitBO> addVisit(@RequestBody @Valid VisitBO visitBO){
         VisitBO savedVisit = visitService.saveVisit(visitBO);
         return ResponseEntity.ok(savedVisit);
     }

@@ -33,7 +33,7 @@ public class CorporateClientController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<CorporateClientBO> addPrivateClient(@RequestBody @Valid CorporateClientBO corporateClientBO){
+    public ResponseEntity<CorporateClientBO> addCorporateClient(@RequestBody @Valid CorporateClientBO corporateClientBO){
         CorporateClientBO savedClient  = corporateClientService.saveCorporateClient(corporateClientBO);
         return ResponseEntity.ok(savedClient);
     }

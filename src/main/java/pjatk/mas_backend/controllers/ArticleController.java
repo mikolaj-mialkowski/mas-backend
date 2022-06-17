@@ -28,13 +28,13 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ArticleBO> getPrivateClient(@PathVariable Long id){
+    public ResponseEntity<ArticleBO> getArticle(@PathVariable Long id){
         ArticleBO articleBO = articleService.getArticleById(id);
         return ResponseEntity.ok(articleBO);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<ArticleBO> addPrivateClient(@RequestBody @Valid ArticleBO articleBO){
+    public ResponseEntity<ArticleBO> addArticle(@RequestBody @Valid ArticleBO articleBO){
         ArticleBO savedArticle = articleService.saveArticle(articleBO);
         return ResponseEntity.ok(savedArticle);
     }
