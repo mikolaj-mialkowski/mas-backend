@@ -65,6 +65,8 @@ public class PrivateClientService {
                 .lastName(clientEntity.getLastName())
                 .phoneNumber(clientEntity.getPhoneNumber())
                 .accessToGreenhouse(clientEntity.getAccessToGreenhouse())
+                .visitEntities(clientEntity.getVisitEntities())
+                .clientType(clientEntity.getClientType())
                 .build();
     }
 

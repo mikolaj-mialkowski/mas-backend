@@ -65,6 +65,8 @@ public class CorporateClientService {
                 .lastName(clientEntity.getLastName())
                 .companyName(clientEntity.getCompanyName())
                 .discountAmount(clientEntity.getDiscountAmount())
+                .visitEntities(clientEntity.getVisitEntities())
+                .clientType(clientEntity.getClientType())
                 .build();
     }
 

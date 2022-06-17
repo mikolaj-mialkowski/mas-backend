@@ -1,12 +1,15 @@
 package pjatk.mas_backend.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Proxy(lazy = false)
@@ -16,6 +19,11 @@ import java.util.Objects;
 @SuperBuilder
 @RequiredArgsConstructor
 public class AdministrationWorkerEntity extends WorkerEntity{
+
+    @OneToMany
+    @ToString.Exclude
+    @JsonIgnore
+    private Set<ArticleEntity> articleEntities;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

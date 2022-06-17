@@ -65,11 +65,11 @@ public class VisitService {
         VisitEntity visitEntity = visitRepository.saveAndFlush(businessObjectToEntity(visitBO));
         LOGGER.info("Saved new visit, as visit entity = " + visitEntity);
 
-        gardenEntity.getVisitEntity().add(visitEntity);
+        gardenEntity.getVisitEntities().add(visitEntity);
         gardenRepository.saveAndFlush(gardenEntity);
         LOGGER.info("Added new visit to garden entity = " + gardenEntity);
 
-        clientEntity.getVisitEntity().add(visitEntity);
+        clientEntity.getVisitEntities().add(visitEntity);
         clientRepository.saveAndFlush(clientEntity);
         LOGGER.info("Added new visit to client entity = " + clientEntity);
 

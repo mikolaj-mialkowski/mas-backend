@@ -1,13 +1,12 @@
 package pjatk.mas_backend.models.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -16,7 +15,8 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GardenEntity {
+@RequiredArgsConstructor
+public class ArticleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,25 +27,27 @@ public class GardenEntity {
     @NotBlank
     private String name;
 
+    @Min(0)
+    @NonNull
+    private Double price;
+
     @NonNull
     @NotBlank
-    private String address;
+    private String destinationInfo;
 
-    @NonNull
-    @NotBlank
-    private String openHours;
+    @ManyToOne
+    private GardenEntity gardenEntity;
 
-    @OneToMany
-    @ToString.Exclude
-    @JsonIgnore
-    private Set<VisitEntity> visitEntities;
+    @ManyToOne
+    private AdministrationWorkerEntity administrationWorkerEntity;
 
+    //CARE
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        GardenEntity that = (GardenEntity) o;
+        ArticleEntity that = (ArticleEntity) o;
         return id != null && Objects.equals(id, that.id);
     }
 

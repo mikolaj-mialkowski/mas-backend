@@ -9,7 +9,6 @@ import pjatk.mas_backend.models.enums.DiscountAmount;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -55,7 +54,7 @@ public class ClientEntity {
     @OneToMany
     @ToString.Exclude
     @JsonIgnore
-    private Set<VisitEntity> visitEntity;
+    private Set<VisitEntity> visitEntities;
 
     @Override
     public boolean equals(Object o) {

@@ -14,6 +14,7 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class VisitEntity {
 
     @Id
@@ -21,11 +22,14 @@ public class VisitEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @NonNull
     private LocalDate date;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.EAGER)
     private ClientEntity clientEntity;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.EAGER)
     private GardenEntity gardenEntity;
 

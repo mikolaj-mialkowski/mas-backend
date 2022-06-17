@@ -1,12 +1,15 @@
 package pjatk.mas_backend.models.business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
+import pjatk.mas_backend.models.entities.VisitEntity;
 import pjatk.mas_backend.models.enums.LifeCycle;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Data
 @ToString
