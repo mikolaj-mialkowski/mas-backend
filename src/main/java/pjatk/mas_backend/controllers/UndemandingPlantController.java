@@ -10,6 +10,7 @@ import pjatk.mas_backend.services.UndemandingPlantService;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("${mas.backend.detailPath.undemandingPlantController}")
 @Validated

@@ -9,6 +9,7 @@ import pjatk.mas_backend.services.ExperiencedGardenerService;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("${mas.backend.detailPath.experiencedGardenerController}")
 @Validated
