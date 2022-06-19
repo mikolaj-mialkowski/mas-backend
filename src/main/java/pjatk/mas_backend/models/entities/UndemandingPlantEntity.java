@@ -6,10 +6,9 @@ import org.hibernate.Hibernate;
 import org.hibernate.annotations.Proxy;
 import pjatk.mas_backend.models.enums.HealthState;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @SuperBuilder
 @Entity
@@ -24,6 +23,11 @@ public class UndemandingPlantEntity extends PlantEntity {
     @NonNull
     @Enumerated(EnumType.STRING)
     private HealthState healthState;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @ToString.Exclude
+    @NonNull
+    private NoviceGardenerEntity noviceGardenerEntities;
 
     @Override
     public boolean equals(Object o) {
