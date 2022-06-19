@@ -9,6 +9,7 @@ import pjatk.mas_backend.services.CorporateClientService;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("${mas.backend.detailPath.corporateClientController}")
 @Validated

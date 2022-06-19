@@ -9,6 +9,7 @@ import pjatk.mas_backend.services.AdministrationWorkerService;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("${mas.backend.detailPath.administrationWorkerController}")
 @Validated
