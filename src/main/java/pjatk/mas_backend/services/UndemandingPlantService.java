@@ -64,6 +64,11 @@ public class UndemandingPlantService {
         return entityToBusinessObject(undemandingPlantEntity);
     }
 
+    public void deleteUndemandingPlant(long id){
+        undemandingPlantRepository.deleteById(id);
+        LOGGER.info("Deleted undemanding plant, as undemanding plant entity id = " + id);
+    }
+
     private UndemandingPlantEntity businessObjectToEntity(UndemandingPlantBO undemandingPlantBO){
         return UndemandingPlantEntity.builder()
                 .fertilizer(undemandingPlantBO.getFertilizer())

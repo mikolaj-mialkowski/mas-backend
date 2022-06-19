@@ -40,4 +40,9 @@ public class UndemandingPlantController {
         return ResponseEntity.ok(savedUndemandingPlant);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteUndemandingPlant(@PathVariable Long id){
+        undemandingPlantService.deleteUndemandingPlant(id);
+        return ResponseEntity.ok("OK");
+    }
 }
